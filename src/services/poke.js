@@ -1,8 +1,8 @@
 import axios from 'axios';
-const baseurl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+const baseurl = 'https://pokeapi.co/api/v2/pokemon';
 
-const getAll = async () => {
-  const response = await axios.get(baseurl);
+const getAll = async (val) => {
+  const response = await axios.get(baseurl + `?limit=${val.limit}` + `&offset=${val.offset}`);
   return response.data;
 };
 
