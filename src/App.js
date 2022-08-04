@@ -1,59 +1,35 @@
 import { useEffect, useState } from 'react';
 import exportedFunctions from './services/poke';
-import filters from './services/filters';
+import PokemonList from './components/PokemonList';
+import Filter from './components/Filter';
 import './App.css';
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
-  const [filter, setFilter] = useState({
+  const [region, setRegion] = useState({
+    index: 0,
     name: 'Kanto',
     offset: 0,
     limit: 151,
-    type: 'all'
   });
-  const [region, setRegion] = useState('dsfasd');
+  const [type, setType] = useState('all');
 
   useEffect(() => {
-    exportedFunctions.getAll(filter).then((res) => {
-      setPokemons(res.results);
+    exportedFunctions.getAll(region).then((res) => {
+      setPokemons(res);
     });
   }, []);
 
   useEffect(() => {
-    exportedFunctions.getAll(filter).then((res) => {
-      setPokemons(res.results);
+    exportedFunctions.getAll(region).then((res) => {
+      setPokemons(res);
     });
-  }, [filter]);
-
-  const regionSelect = (e) => {
-    const name = filters.regions[e.target.value].name;
-    const offset = filters.regions[e.target.value].offset;
-    const limit = filters.regions[e.target.value].limit;
-    setFilter({ ...filter, name, offset, limit });
-  };
-
-  const regionSelects = (e) => {
-    setRegion(e.target.value);
-  };
-
+  }, [region]);
 
   return (
     <div>
-      <div>
-        <select onChange={regionSelect}>
-          {filters.regions.map((region, index) => (
-            <option key={region.name} value={index}>{region.name}</option>
-          ))}
-        </select>
-        <select onChange={regionSelects} value={region}>
-          {filters.regions.map((region) => (
-            <option key={region.name} value={region.name}>{region.name}</option>
-          ))}
-        </select>
-      </div>
-      {pokemons.map((pokemon) => (
-        <h1 key={pokemon.name}>{pokemon.name}</h1>
-      ))}
+      <Filter setRegion={setRegion} setType={setType} region={region} type={type} />
+      <PokemonList type={type} pokemons={pokemons} />
     </div>
   );
 }
