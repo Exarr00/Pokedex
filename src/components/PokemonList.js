@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import PokeCard from './PokeCard';
+import './css/pokelist.css';
 
 const PokemonList = ({ type, pokemons }) => {
   const getFiltered = () => {
@@ -12,9 +14,9 @@ const PokemonList = ({ type, pokemons }) => {
   };
 
   return (
-    <div>
+    <div className='card-container'>
       {getFiltered().map((pokemon) => (
-        <h1 key={pokemon.name}>{pokemon.name} {pokemon.type}</h1>
+        <PokeCard key={pokemon.name} pokemon={pokemon} />
       ))}
     </div>
   );
