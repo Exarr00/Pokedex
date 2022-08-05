@@ -15,6 +15,7 @@ function App() {
   });
   const [type, setType] = useState('all');
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -26,11 +27,19 @@ function App() {
 
   return (
     <div>
-      <Filter setRegion={setRegion} setType={setType} region={region} type={type} />
-      {loading ?
-        <Loading /> :
-        <PokemonList type={type} pokemons={pokemons} />
-      }
+      <Filter
+        setSearch={setSearch}
+        setRegion={setRegion}
+        setType={setType}
+        search={search}
+        region={region}
+        type={type}
+      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <PokemonList type={type} pokemons={pokemons} search={search} />
+      )}
     </div>
   );
 }

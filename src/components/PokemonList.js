@@ -2,14 +2,19 @@ import PropTypes from 'prop-types';
 import PokeCard from './PokeCard';
 import './css/pokelist.css';
 
-const PokemonList = ({ type, pokemons }) => {
+const PokemonList = ({ type, pokemons, search }) => {
   const getFiltered = () => {
-    if (type === 'all') return pokemons;
-    const filteredList = pokemons.filter(pokemon => {
-      return pokemon.types.some(typing => {
-        return typing.type.name == type;
-      });
+    if (type === 'all' && !search) return pokemons;
+    let filteredList = pokemons.filter((element) => {
+      return element.name.includes(search);
     });
+    if (type !== 'all') {
+      filteredList = filteredList.filter((pokemon) => {
+        return pokemon.types.some((typing) => {
+          return typing.type.name == type;
+        });
+      });
+    }
     return filteredList;
   };
 
@@ -24,7 +29,8 @@ const PokemonList = ({ type, pokemons }) => {
 
 PokemonList.propTypes = {
   type: PropTypes.string.isRequired,
-  pokemons: PropTypes.array.isRequired
+  pokemons: PropTypes.array.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 export default PokemonList;
