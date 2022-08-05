@@ -17,6 +17,7 @@ const getIndividual = async (allPokes) => {
       });
     })
   );
+  pokeArr.sort((a,b) => a.id - b.id);
   return pokeArr;
 };
 

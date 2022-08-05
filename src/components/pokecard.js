@@ -4,13 +4,17 @@ import * as imgtypes from '../services/imgtypes';
 const pokecard = ({ pokemon }) => {
   return (
     <div className='card'>
-      <div>{pokemon.name}</div>
-      {pokemon.types.map(typing => (
-        <div key={typing.type.name} className='imgsss'>
-          <p>{typing.type.name}</p>
-          <img src={imgtypes[typing.type.name]} alt="" />
-        </div>
-      ))}
+      <img src={pokemon.sprites.front_default} alt="img failed to load" className='sprite'/>
+      <h3>{pokemon.name}</h3>
+      <p>#{pokemon.id}</p>
+      <div className='types'>
+        {pokemon.types.map(typing => (
+          <div key={typing.type.name} className={`typing ${typing.type.name}`}>
+            <img src={imgtypes[typing.type.name]} alt="" />
+            {typing.type.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

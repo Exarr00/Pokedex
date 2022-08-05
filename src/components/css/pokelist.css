@@ -1,5 +1,7 @@
-.card-container{
- display: flex;
- flex-flow: wrap row;
- width: 75%;
+.card-container {
+  display: flex;
+  place-content: center;
+  flex-flow: wrap row;
+  align-items: center;
+  margin-top: 5rem;
 }
