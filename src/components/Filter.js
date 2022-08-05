@@ -15,29 +15,41 @@ const Filter = ({ setSearch, search, setRegion, setType, region, type }) => {
     setSearch(lowerVal);
   };
 
+  const capitalize = (val) =>{
+    return val && val[0].toUpperCase() + val.slice(1);
+  };
+
   return (
     <div className='filter-container'>
-      <input
-        className='search-input'
-        type='text'
-        placeholder='Search Pokemon'
-        value={search}
-        onChange={(e) => searchPoke(e.target.value)}
-      />
-      <select onChange={regionSelect} value={region.index}>
-        {filters.regions.map((region, index) => (
-          <option key={region.name} value={index}>
-            {region.name}
-          </option>
-        ))}
-      </select>
-      <select onChange={(e) => setType(e.target.value)} value={type}>
-        {filters.types.map((type) => (
-          <option key={type} value={type}>
-            {type}
-          </option>
-        ))}
-      </select>
+      <div className='filter-options'>
+        <div className='poke-region'>
+          <select onChange={regionSelect} value={region.index}>
+            {filters.regions.map((region, index) => (
+              <option key={region.name} value={index}>
+                {region.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className='poke-type'>
+          <select onChange={(e) => setType(e.target.value)} value={type}>
+            {filters.types.map((type) => (
+              <option key={type} value={type}>
+                {capitalize(type)}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className='poke-search'>
+        <input
+          className='search-input'
+          type='text'
+          placeholder='Search Pokemon'
+          value={search}
+          onChange={(e) => searchPoke(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

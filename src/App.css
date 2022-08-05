@@ -27,6 +27,7 @@
 
 body{
   font-family: 'Press Start 2P', cursive;
+  background-color: rgba(236,240,241,1);
   font-size: 0.75rem;
   padding: 0 10vw;
 }

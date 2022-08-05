@@ -6,7 +6,7 @@ const pokecard = ({ pokemon }) => {
     <div className='card'>
       <img src={pokemon.sprites.front_default} alt="img failed to load" className='sprite'/>
       <h3>{pokemon.name}</h3>
-      <p>#{pokemon.id}</p>
+      <p>No.{pokemon.id}</p>
       <div className='types'>
         {pokemon.types.map(typing => (
           <div key={typing.type.name} className={`typing ${typing.type.name}`}>

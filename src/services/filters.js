@@ -43,7 +43,6 @@ const filters = {
   ],
   types: [
     'all',
-    'grass',
     'bug',
     'dark',
     'dragon',
@@ -53,6 +52,7 @@ const filters = {
     'fire',
     'flying',
     'ghost',
+    'grass',
     'ground',
     'ice',
     'normal',

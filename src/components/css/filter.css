@@ -1,5 +1,52 @@
-.filter-container{
+.filter-container {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding: 2rem 0 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
+.poke-search {
+    width: 60%;
+}
+
+.poke-type,
+.poke-region{
+    width: 50%;
+}
+
+select:focus-visible, input[type=text]:focus-visible{
+    outline: 0;
+}
+
+.poke-search input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid black;
+    border-left: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+select {
+    padding: calc(1rem - 1px) 1rem calc(1rem - 1px) 1rem;
+    background-color: rgb(236,236,236 / 0.8);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.poke-type select {
+    border-left: 0px;
+    width: 100%;
+}
+
+.poke-region select {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
