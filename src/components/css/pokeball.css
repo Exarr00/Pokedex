@@ -1,0 +1,15 @@
+.pokeball{
+    position: fixed;
+    top: -20em;
+    left: -20em;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.pokeball img{
+    width: 50em;
+    height: 50em;
+    transform: rotate(90deg);
+}

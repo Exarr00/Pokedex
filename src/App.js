@@ -3,6 +3,7 @@ import exportedFunctions from './services/poke';
 import PokemonList from './components/PokemonList';
 import Filter from './components/Filter';
 import Loading from './components/Loading';
+import Pokeball from './components/Pokeball';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div>
+      <Pokeball />
       <Filter
         setSearch={setSearch}
         setRegion={setRegion}
