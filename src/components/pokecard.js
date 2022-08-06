@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import './css/pokecard.css';
 import * as imgtypes from '../services/imgtypes';
 
-const pokecard = ({ pokemon }) => {
+const PokeCard = ({ pokemon, handleModal }) => {
   return (
-    <div className='card'>
-      <img src={pokemon.sprites.front_default} alt="img failed to load" className='sprite'/>
+    <div className='card' onClick={() => handleModal(pokemon)}>
+      <img src={pokemon.sprites.front_default} alt="img failed to load" className='sprite' />
       <h3>{pokemon.name}</h3>
       <p>No.{pokemon.id}</p>
       <div className='types'>
@@ -19,4 +20,9 @@ const pokecard = ({ pokemon }) => {
   );
 };
 
-export default pokecard;
+PokeCard.propTypes = {
+  pokemon: PropTypes.object.isRequired,
+  handleModal: PropTypes.func.isRequired
+};
+
+export default PokeCard;

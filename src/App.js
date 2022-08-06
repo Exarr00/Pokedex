@@ -4,6 +4,7 @@ import PokemonList from './components/PokemonList';
 import Filter from './components/Filter';
 import Loading from './components/Loading';
 import Pokeball from './components/Pokeball';
+import PokeModal from './components/PokeModal';
 import './App.css';
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
   const [type, setType] = useState('all');
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [modalPokemon, setModalPokemon] = useState({});
 
   useEffect(() => {
     setLoading(true);
@@ -26,8 +29,24 @@ function App() {
     });
   }, [region]);
 
+  const handleModal = (pokemon) => {
+    setShowModal(true);
+    setModalPokemon(pokemon);
+    console.log(pokemon.name);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseModal = () => {};
+
   return (
     <div>
+      {showModal && (
+        <PokeModal
+          handleCloseModal={handleCloseModal}
+          handleModal={handleModal}
+          modalPokemon={modalPokemon}
+        />
+      )}
       <Pokeball />
       <Filter
         setSearch={setSearch}
@@ -40,7 +59,12 @@ function App() {
       {loading ? (
         <Loading />
       ) : (
-        <PokemonList type={type} pokemons={pokemons} search={search} />
+        <PokemonList
+          type={type}
+          pokemons={pokemons}
+          search={search}
+          handleModal={handleModal}
+        />
       )}
     </div>
   );

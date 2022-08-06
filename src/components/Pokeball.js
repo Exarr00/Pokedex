@@ -4,13 +4,20 @@ import './css/pokeball.css';
 
 const Pokeball = () => {
   const imgRef = useRef();
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      requestAnimationFrame(() => {
-        const rotation = window.scrollY/20 + 90;
-        imgRef.current.style.transform = `rotate(${rotation}deg)`;
-      });
+
+  const handleScroll = () => {
+    requestAnimationFrame(() => {
+      const rotation = window.scrollY / 20 + 90;
+      imgRef.current.style.transform = `rotate(${rotation}deg)`;
     });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
