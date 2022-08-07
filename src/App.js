@@ -36,7 +36,10 @@ function App() {
     document.body.style.overflow = 'hidden';
   };
 
-  const handleCloseModal = () => {};
+  const handleCloseModal = () => {
+    setShowModal(false);
+    document.body.style.overflow = 'unset';
+  };
 
   return (
     <div>
