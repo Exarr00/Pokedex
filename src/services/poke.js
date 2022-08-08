@@ -17,12 +17,19 @@ const getIndividual = async (allPokes) => {
       });
     })
   );
-  pokeArr.sort((a,b) => a.id - b.id);
+  pokeArr.sort((a, b) => a.id - b.id);
   return pokeArr;
 };
 
+const getEvo = async (id) => {
+  const response = await axios.get(baseurl + '-species/' + id);
+  const evoRes = await axios.get(response.data['evolution_chain'].url);
+  return evoRes.data;
+};
+
 const exportedFunctions = {
-  getAll
+  getAll,
+  getEvo
 };
 
 export default exportedFunctions;
