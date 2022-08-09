@@ -7,13 +7,22 @@ import './css/pokemodal.css';
 
 const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
   const [types, setTypes] = useState([]);
+  const [evoLine, setEvoLine] = useState({});
+  const [prev, setPrev] = useState({});
+  const [next, setNext] = useState({});
 
   useEffect(() => {
     handleColor();
     exportedFunctions.getEvo(modalPokemon.id).then(data => {
       console.log(data);
+      setEvoLine(data);
+      console.log(evoLine);
     });
-  }, []);
+    exportedFunctions.getPrevNext(modalPokemon.id).then(data => {
+      setPrev(data.prev);
+      setNext(data.next);
+    });
+  }, [modalPokemon]);
 
   const handleColor = () => {
     const typing = modalPokemon.types.map((type) => {
@@ -42,10 +51,17 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
         style={background}
       >
         <div className='innerModal'>
-          <div>
-            <p>{modalPokemon.name}</p>
-            <p>{modalPokemon.stats[0]['base_stat']}</p>
-          </div>
+          <header className='modalHeader'>
+            <div onClick={() => handleModal(prev)}>
+              {prev.id} {prev.name}
+            </div>
+            <div>
+              {modalPokemon.id} {modalPokemon.name}
+            </div>
+            <div onClick={() => handleModal(next)}>
+              {next.id} {next.name}
+            </div>
+          </header>
           <img
             src={modalPokemon.sprites.other['official-artwork']['front_default']}
             alt='img failed to load'
@@ -72,13 +88,38 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
             ))}
           </div>
           <div id="stats">
+            <p>{modalPokemon.stats[0]['base_stat']}</p>
             <p>Atk {modalPokemon.stats[1]['base_stat']}</p>
             <p>DEF {modalPokemon.stats[2]['base_stat']}</p>
             <p>SP-Atk {modalPokemon.stats[3]['base_stat']}</p>
             <p>SP-Def {modalPokemon.stats[4]['base_stat']}</p>
             <p>SPD {modalPokemon.stats[5]['base_stat']}</p>
           </div>
-          <div id="evo"></div>
+          {!!evoLine.species && (
+            <div className='evoLine'>
+              <p>{evoLine.species.name}</p>
+              <p>--&gt;</p>
+              <div className='evoLine-second-group'>
+                {evoLine['evolves_to'].map((poke) => {
+                  return (
+                    <div key={poke.species.name} className="evoLine-second">
+                      <p>{poke.species.name}</p>
+                      <p>--&gt;</p>
+                      <div className='evoline-third-group'>
+                        {poke['evolves_to'].map((final) => {
+                          return (
+                            <div key={final.species.name} className="evoLine-third">
+                              <p>{final.species.name}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
           <div onClick={handleModal}></div>
         </div>
       </div>

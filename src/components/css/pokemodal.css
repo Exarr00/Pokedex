@@ -38,3 +38,25 @@
     width: 100%;
     overflow: auto;
 }
+
+.modalHeader{
+    display: flex;
+}
+
+.evoLine {
+    display: flex;
+    gap: 10px;
+}
+
+.evoLine p{
+    align-self: center;
+}
+
+.evoLine-second{
+    display: flex;
+    gap: 10px;
+}
+
+.evoLine-third{
+    display: flex;
+}

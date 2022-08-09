@@ -24,25 +24,25 @@ const getIndividual = async (allPokes) => {
 const getEvo = async (id) => {
   const response = await axios.get(baseurl + '-species/' + id);
   const evoRes = await axios.get(response.data['evolution_chain'].url);
-  let evoChain = { 0: [], 1: [], 2: [] };
   let evoData = evoRes.data.chain;
-  evoChain[0].push(evoData.species.name);
-  for (let i = 0; i < evoData['evolves_to'].length; i++) {
-    evoChain[1].push(evoData['evolves_to'][i].species.name);
-    if (evoData['evolves_to'][i]['evolves_to'].length > 0) {
-      for (let j = 0; j < evoData['evolves_to'][i]['evolves_to'].length; j++) {
-        evoChain[2].push(
-          evoData['evolves_to'][i]['evolves_to'][j].species.name
-        );
-      }
-    }
-  }
-  return evoChain;
+  return evoData;
+};
+
+const getPrevNext = async (id) => {
+  const prevId = id === 1 ? 905 : id - 1;
+  const nextId = id === 905 ? 1 : id + 1;
+  const prevRes = await axios.get(baseurl + '/' + prevId);
+  const nextRes = await axios.get(baseurl + '/' + nextId);
+  return {
+    prev: prevRes.data,
+    next: nextRes.data,
+  };
 };
 
 const exportedFunctions = {
   getAll,
   getEvo,
+  getPrevNext
 };
 
 export default exportedFunctions;
