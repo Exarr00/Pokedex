@@ -19,7 +19,7 @@
     border-radius: 20px;
 }
 
-.pokeModal::after{
+.pokeModal::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -33,14 +33,35 @@
     z-index: -1;
 }
 
-.innerModal{
+.innerModal {
+    display: flex;
+    place-content: center;
     height: 100%;
     width: 100%;
     overflow: auto;
 }
 
-.modalHeader{
+.modalHeader {
     display: flex;
+    cursor: default;
+    text-transform: uppercase;
+}
+
+.modalHeader div{
+    display: flex;
+    border: 1px solid black;
+    padding: 1rem;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.modalHeader div img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.modalHeader:hover :nth-child(odd) {
+    cursor: pointer;
 }
 
 .evoLine {
@@ -48,15 +69,40 @@
     gap: 10px;
 }
 
-.evoLine p{
+.evoLine p {
     align-self: center;
 }
 
-.evoLine-second{
+.evoLine-second {
     display: flex;
     gap: 10px;
 }
 
-.evoLine-third{
+.evoLine-third {
     display: flex;
+}
+
+.stat-container{
+    display: flex;
+}
+
+.stat-name{
+    width: 8ch;
+}
+
+.stat-bar-container{
+    width: 15ch;
+    margin: 5px;
+    display: flex;
+    gap: 2px;
+}
+
+.stat-bar{
+    background-color: green;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    padding: 0.3rem;
+    border: 1px solid black;
+    justify-content: flex-end;
 }

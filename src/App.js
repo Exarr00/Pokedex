@@ -4,7 +4,7 @@ import PokemonList from './components/PokemonList';
 import Filter from './components/Filter';
 import Loading from './components/Loading';
 import Pokeball from './components/Pokeball';
-import PokeModal from './components/PokeModal';
+import PokeModal from './components/Modal/PokeModal';
 import './App.css';
 
 function App() {
