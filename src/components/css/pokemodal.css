@@ -35,10 +35,16 @@
 
 .innerModal {
     display: flex;
-    place-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
     height: 100%;
     width: 100%;
     overflow: auto;
+}
+
+.innerModal > img{
+    width: 40%;
 }
 
 .modalHeader {
@@ -47,12 +53,16 @@
     text-transform: uppercase;
 }
 
-.modalHeader div{
+.modalHeader > div{
     display: flex;
-    border: 1px solid black;
     padding: 1rem;
     font-size: 1rem;
     user-select: none;
+}
+
+.main{
+    flex-direction: column;
+    place-items: center;
 }
 
 .modalHeader div img{
@@ -62,6 +72,32 @@
 
 .modalHeader:hover :nth-child(odd) {
     cursor: pointer;
+}
+
+.next:hover > img,
+.prev:hover > img
+{
+    transform: scale(1.2);
+}
+
+.flavor{
+    margin-bottom: 2rem;
+    width: 70%;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.general-info{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    text-transform: capitalize;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.modal-types{
+    width: fit-content;
 }
 
 .evoLine {

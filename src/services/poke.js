@@ -28,6 +28,11 @@ const getEvo = async (id) => {
   return evoData;
 };
 
+const getSpecies = async (id) => {
+  const response = await axios.get(baseurl + '-species/' + id);
+  return response.data;
+};
+
 const getPrevNext = async (id) => {
   const prevId = id === 1 ? 905 : id - 1;
   const nextId = id === 905 ? 1 : id + 1;
@@ -42,7 +47,8 @@ const getPrevNext = async (id) => {
 const exportedFunctions = {
   getAll,
   getEvo,
-  getPrevNext
+  getPrevNext,
+  getSpecies,
 };
 
 export default exportedFunctions;
