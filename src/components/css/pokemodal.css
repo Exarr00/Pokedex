@@ -14,7 +14,7 @@
 
 .pokeModal {
     height: 80%;
-    min-width: 80%;
+    width: 80%;
     padding: 1rem;
     border-radius: 20px;
 }
@@ -124,20 +124,6 @@
     border-radius: 20px;
 }
 
-.evoLine-container {
-    margin: 1rem;
-    width: 80%;
-}
-
-.evoLine {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    margin: auto;
-    gap: 10px;
-    text-transform: capitalize;
-    overflow-x: auto;
-}
 
 .evoLine img {
     height: 10rem;
@@ -148,26 +134,26 @@
     align-self: center;
 }
 
-.evoLine-second-group,
-.evoLine-third-group {
-    display: flex;
+.trigger{
+    font-size: 0.5rem;
 }
 
-.evoLine-second {
-    display: flex;
-    place-items: center;
-    gap: 10px;
+.evoLine-container{
+    width: 80%;
+    text-transform: capitalize;
 }
 
-
-
-.evoLine-third {
+.evoLine-second-group{
     display: flex;
+    overflow-x: auto;
 }
 
-.evo {
-    display: flex;
-    flex-direction: column;
+.evoLine-secondLine{
+    width: 100%;
+}
+
+.evo img{
+    cursor: pointer;
 }
 
 .stat-container {

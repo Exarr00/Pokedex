@@ -78,7 +78,7 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
             alt='img failed to load'
           />
           <ModalInfo modalPokemon={modalPokemon} species={species} abilities={abilities}/>
-          <ModalEvo evoLine={evoLine}></ModalEvo>
+          <ModalEvo evoLine={evoLine} handleModal={handleModal} modalPokemon={modalPokemon.name}></ModalEvo>
         </div>)
         }
       </div>

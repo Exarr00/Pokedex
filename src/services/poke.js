@@ -21,6 +21,12 @@ const getIndividual = async (allPokes) => {
   return pokeArr;
 };
 
+const getSingle = async (name) => {
+  console.log(baseurl + '/' + name);
+  const response = await axios.get(baseurl + '/' + name);
+  return response.data;
+};
+
 const getEvo = async (id) => {
   const response = await axios.get(baseurl + '-species/' + id);
   const evoRes = await axios.get(response.data['evolution_chain'].url);
@@ -64,6 +70,7 @@ const getAbilities = async (abilities) => {
 const exportedFunctions = {
   getAll,
   getEvo,
+  getSingle,
   getPrevNext,
   getSpecies,
   getAbilities,
