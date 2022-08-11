@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const ModalStats = ({ stat, statNum, type }) => {
   return (
     <tr className="stat-container">
-      <td className='stat-name'>{stat}:</td>
+      <td className='stat-name'><b>{stat}:</b></td>
       <td className="stat-bar-container">
         <div className={`stat-bar ${type}`} style={{ width: `${statNum}%` }}></div>
         <div>{statNum}</div>

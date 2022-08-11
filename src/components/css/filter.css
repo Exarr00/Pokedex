@@ -12,15 +12,17 @@
 }
 
 .poke-search {
+    position: relative;
     width: 60%;
 }
 
 .poke-type,
-.poke-region{
+.poke-region {
     width: 50%;
 }
 
-select:focus-visible, input[type=text]:focus-visible{
+select:focus-visible,
+input[type=text]:focus-visible {
     outline: 0;
 }
 
@@ -31,13 +33,21 @@ select:focus-visible, input[type=text]:focus-visible{
     border-left: 0px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 select {
-    padding: calc(1rem - 1px) 1rem calc(1rem - 1px) 1rem;
-    background-color: rgb(236,236,236 / 0.8);
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    padding: 1rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border: 1px solid black;
+    appearance: none;
+
+}
+
+.poke-type,
+.poke-region {
+    position: relative;
 }
 
 .poke-type select {
@@ -45,8 +55,35 @@ select {
     width: 100%;
 }
 
+.poke-type::before,
+.poke-region::before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    right: 20%;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-top: 0.3rem solid transparent;
+    border-bottom: 0.3rem solid black;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.poke-type::after,
+.poke-region::after {
+    content: "";
+    position: absolute;
+    top: 65%;
+    right: 20%;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-top: 0.3rem solid black;
+    border-bottom: 0.3rem solid transparent;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
 .poke-region select {
     width: 100%;
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
 }

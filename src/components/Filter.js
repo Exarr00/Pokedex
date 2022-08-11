@@ -7,6 +7,7 @@ const Filter = ({ setSearch, search, setRegion, setType, region, type }) => {
     const name = filters.regions[e.target.value].name;
     const offset = filters.regions[e.target.value].offset;
     const limit = filters.regions[e.target.value].limit;
+    setSearch('');
     setRegion({ id: e.target.value, name, offset, limit });
   };
 
@@ -15,7 +16,7 @@ const Filter = ({ setSearch, search, setRegion, setType, region, type }) => {
     setSearch(lowerVal);
   };
 
-  const capitalize = (val) =>{
+  const capitalize = (val) => {
     return val && val[0].toUpperCase() + val.slice(1);
   };
 

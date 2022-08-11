@@ -40,11 +40,12 @@
     padding: 2rem;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    text-align: center;
+    overflow-x: hidden;
 }
 
 .innerModal>img {
-    width: 40%;
+    width: 20%;
 }
 
 .modalHeader {
@@ -58,12 +59,13 @@
     padding: 1rem;
     font-size: 1rem;
     user-select: none;
+    height: fit-content;
 }
 
 .main {
     flex-direction: column;
     place-items: center;
-    row-gap: 1rem;
+    row-gap: 0.2rem;
 }
 
 .modalHeader div img {
@@ -71,13 +73,13 @@
     height: 3rem;
 }
 
-.modalHeader:hover :nth-child(odd) {
+.modalHeader:hover div:nth-child(odd) {
     cursor: pointer;
 }
 
 .next:hover>img,
 .prev:hover>img {
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
 .flavor {
@@ -96,31 +98,76 @@
     text-align: center;
 }
 
-.general-info div{
+.general-info div {
     margin: 0.5rem;
 }
 
-.modal-types .typing{
-    width:12ch;
+.modal-types .typing {
+    width: 12ch;
     justify-content: center;
+}
+
+.abilities {
+    width: 80%;
+    margin: 1rem;
+}
+
+.abilities p {
+    margin-left: 1rem;
+    text-transform: capitalize;
+}
+
+.effect{
+    padding: 0.5rem;
+    line-height: 1.5rem;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.evoLine-container {
+    margin: 1rem;
+    width: 80%;
 }
 
 .evoLine {
     display: flex;
+    flex-direction: column;
+    place-items: center;
+    margin: auto;
     gap: 10px;
+    text-transform: capitalize;
+    overflow-x: auto;
+}
+
+.evoLine img {
+    height: 10rem;
+    width: 10rem;
 }
 
 .evoLine p {
     align-self: center;
 }
 
+.evoLine-second-group,
+.evoLine-third-group {
+    display: flex;
+}
+
 .evoLine-second {
     display: flex;
+    place-items: center;
     gap: 10px;
 }
 
+
+
 .evoLine-third {
     display: flex;
+}
+
+.evo {
+    display: flex;
+    flex-direction: column;
 }
 
 .stat-container {

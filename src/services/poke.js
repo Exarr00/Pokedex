@@ -34,8 +34,8 @@ const getSpecies = async (id) => {
 };
 
 const getPrevNext = async (id) => {
-  const prevId = id === 1 ? 905 : id - 1;
-  const nextId = id === 905 ? 1 : id + 1;
+  const prevId = id === 1 ? 898 : id - 1;
+  const nextId = id === 898 ? 1 : id + 1;
   const prevRes = await axios.get(baseurl + '/' + prevId);
   const nextRes = await axios.get(baseurl + '/' + nextId);
   return {
@@ -51,7 +51,10 @@ const getAbilities = async (abilities) => {
       console.log(ability);
       return axios.get(ability.ability.url).then((result) => {
         console.log(result);
-        allAbilities.push(result.data.effect_entries);
+        allAbilities.push({
+          name: ability.ability.name,
+          entries: result.data.effect_entries,
+        });
       });
     })
   );

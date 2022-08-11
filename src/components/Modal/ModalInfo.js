@@ -6,14 +6,21 @@ const ModalInfo = ({ modalPokemon, species, abilities }) => {
   const getFlavor = (entries) => {
     const match = entries.find(flavor => flavor.language.name === 'en');
     console.log(abilities);
+    console.log(abilities[0].entries[0].effect);
     return match.flavor_text.split('\f').join('');
+  };
+
+  const getEffect = (entries) => {
+    const match = entries.find(effect => effect.language.name === 'en');
+    console.log(match);
+    return match.effect.split('\f').join('');
   };
 
   return (
     <>
-      <div className='flavor'>
+      <h3 className='flavor'>
         {getFlavor(species.flavor_text_entries)}
-      </div>
+      </h3>
       <div className='general-info'>
         <div className='modal-types'>
           <h4><b>Types:</b></h4>
@@ -36,21 +43,29 @@ const ModalInfo = ({ modalPokemon, species, abilities }) => {
           <h4><b>Habitat:</b></h4> <div>{species.habitat ? species.habitat.name : 'NONE'}</div>
         </div>
       </div>
-      <div id='abilities'>
-        {modalPokemon.abilities.map((abilityList) => (
-          <p key={abilityList.ability.name}>{abilityList.ability.name}</p>
+      <div>
+        <h3><b>Base Stats:</b></h3>
+        <table id='stats'>
+          <tbody>
+            <ModalStats stat={'Hp'} statNum={modalPokemon.stats[0]['base_stat']} type={modalPokemon.types[0].type.name} />
+            <ModalStats stat={'Atk'} statNum={modalPokemon.stats[1]['base_stat']} type={modalPokemon.types[0].type.name} />
+            <ModalStats stat={'Def'} statNum={modalPokemon.stats[2]['base_stat']} type={modalPokemon.types[0].type.name} />
+            <ModalStats stat={'Sp-Atk'} statNum={modalPokemon.stats[3]['base_stat']} type={modalPokemon.types[0].type.name} />
+            <ModalStats stat={'Sp-Def'} statNum={modalPokemon.stats[4]['base_stat']} type={modalPokemon.types[0].type.name} />
+            <ModalStats stat={'Spd'} statNum={modalPokemon.stats[5]['base_stat']} type={modalPokemon.types[0].type.name} />
+          </tbody>
+        </table>
+      </div>
+      <div className='abilities'>
+        <h4><b>Abilities:</b></h4>
+        {abilities.map((abilityList) => (
+          <div key={abilityList.name}>
+            <p>{abilityList.name}</p>
+            <div className='effect'>{getEffect(abilityList.entries)}</div>
+          </div>
         ))}
       </div>
-      <table id='stats'>
-        <tbody>
-          <ModalStats stat={'Hp'} statNum={modalPokemon.stats[0]['base_stat']} type={modalPokemon.types[0].type.name} />
-          <ModalStats stat={'Atk'} statNum={modalPokemon.stats[1]['base_stat']} type={modalPokemon.types[0].type.name} />
-          <ModalStats stat={'Def'} statNum={modalPokemon.stats[2]['base_stat']} type={modalPokemon.types[0].type.name} />
-          <ModalStats stat={'Sp-Atk'} statNum={modalPokemon.stats[3]['base_stat']} type={modalPokemon.types[0].type.name} />
-          <ModalStats stat={'Sp-Def'} statNum={modalPokemon.stats[4]['base_stat']} type={modalPokemon.types[0].type.name} />
-          <ModalStats stat={'Spd'} statNum={modalPokemon.stats[5]['base_stat']} type={modalPokemon.types[0].type.name} />
-        </tbody>
-      </table>
+
     </>
   );
 };

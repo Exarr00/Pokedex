@@ -4,16 +4,16 @@ const ModalHeader = ({ prev, next, modalPokemon, handleModal }) => {
   return (
     <header className='modalHeader'>
       <div className='prev' onClick={() => handleModal(prev)}>
-        <p>&lt;#{prev.id}</p>
+        <h3>&lt;#{prev.id}</h3>
         <img src={prev.sprites['front_default']} alt='' />
       </div>
       <div className='main'>
-        <div>{modalPokemon.name}</div>
-        <div id='num'>#{modalPokemon.id}</div>
+        <h3>{modalPokemon.name}</h3>
+        <h3 id='num'>#{modalPokemon.id}</h3>
       </div>
       <div className='next' onClick={() => handleModal(next)}>
         <img src={next.sprites['front_default']} alt='' />
-        <p>#{next.id}&gt;</p>
+        <h3>#{next.id}&gt;</h3>
       </div>
     </header>
   );
