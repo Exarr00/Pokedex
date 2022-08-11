@@ -5,12 +5,11 @@ import * as imgtypes from '../../services/imgtypes';
 const ModalInfo = ({ modalPokemon, species, abilities }) => {
   const getFlavor = (entries) => {
     const match = entries.find(flavor => flavor.language.name === 'en');
-    console.log(abilities);
-    console.log(abilities[0].entries[0].effect);
     return match.flavor_text.split('\f').join('');
   };
 
   const getEffect = (entries) => {
+    if(entries.length === 0) return '<--Currently no info-->';
     const match = entries.find(effect => effect.language.name === 'en');
     console.log(match);
     return match.effect.split('\f').join('');
