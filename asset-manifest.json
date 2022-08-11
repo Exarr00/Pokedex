@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pokedex/static/css/main.dc495ea9.css",
+    "main.js": "/pokedex/static/js/main.6151f93f.js",
+    "static/media/pokeball2.png": "/pokedex/static/media/pokeball2.787d8bf891fb7d03da93.png",
+    "static/media/masterball1.png": "/pokedex/static/media/masterball1.d92f18f923a4dbef7807.png",
+    "index.html": "/pokedex/index.html",
+    "main.dc495ea9.css.map": "/pokedex/static/css/main.dc495ea9.css.map",
+    "main.6151f93f.js.map": "/pokedex/static/js/main.6151f93f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc495ea9.css",
+    "static/js/main.6151f93f.js"
+  ]
+}
