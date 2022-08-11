@@ -6,13 +6,13 @@ const ModalEvo = ({ evoLine }) => {
       {!!evoLine.species && (
         <div className='evoLine'>
           <p>{evoLine.species.name}</p>
-          <p>--&gt;</p>
+          {evoLine['evolves_to'][0] && <p>--&gt;</p>}
           <div className='evoLine-second-group'>
             {evoLine['evolves_to'].map((poke) => {
               return (
                 <div key={poke.species.name} className='evoLine-second'>
                   <p>{poke.species.name}</p>
-                  <p>--&gt;</p>
+                  {poke['evolves_to'][0] && <p>--&gt;</p>}
                   <div className='evoline-third-group'>
                     {poke['evolves_to'].map((final) => {
                       return (

@@ -44,11 +44,26 @@ const getPrevNext = async (id) => {
   };
 };
 
+const getAbilities = async (abilities) => {
+  const allAbilities = [];
+  await Promise.all(
+    abilities.map((ability) => {
+      console.log(ability);
+      return axios.get(ability.ability.url).then((result) => {
+        console.log(result);
+        allAbilities.push(result.data.effect_entries);
+      });
+    })
+  );
+  return allAbilities;
+};
+
 const exportedFunctions = {
   getAll,
   getEvo,
   getPrevNext,
   getSpecies,
+  getAbilities,
 };
 
 export default exportedFunctions;

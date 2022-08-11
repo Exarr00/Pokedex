@@ -1,4 +1,4 @@
-import masterball from './imgs/masterball.png';
+import masterball from './imgs/masterball1.png';
 import './css/loading.css';
 
 const Loading = () => {

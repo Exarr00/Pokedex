@@ -1,29 +1,39 @@
 import PropTypes from 'prop-types';
 import ModalStats from './ModalStats';
+import * as imgtypes from '../../services/imgtypes';
 
-const ModalInfo = ({ modalPokemon, species }) => {
+const ModalInfo = ({ modalPokemon, species, abilities }) => {
+  const getFlavor = (entries) => {
+    const match = entries.find(flavor => flavor.language.name === 'en');
+    console.log(abilities);
+    return match.flavor_text.split('\f').join('');
+  };
+
   return (
     <>
       <div className='flavor'>
-        {(species.flavor_text_entries[0].flavor_text).split('\f').join('')}
+        {getFlavor(species.flavor_text_entries)}
       </div>
       <div className='general-info'>
         <div className='modal-types'>
-          Types:
+          <h4><b>Types:</b></h4>
           {modalPokemon.types.map((eachType) => (
-            <div key={eachType.type.name} className={`typing ${eachType.type.name}`}>{eachType.type.name}</div>
+            <div key={eachType.type.name} className={`typing ${eachType.type.name}`}>
+              <img src={imgtypes[eachType.type.name]} alt="" />
+              {eachType.type.name}
+            </div>
           ))}
         </div>
         <div id='physical-info'>
-          Physical:
+          <h4><b>Physical:</b></h4>
           <div>Height: {modalPokemon.height} </div>
           <div>Weight: {modalPokemon.weight} </div>
         </div>
         <div id="catch-rate">
-          Catch Rate: <div>{species.capture_rate}</div>
+          <h4><b>Catch Rate:</b></h4> <div>{species.capture_rate}</div>
         </div>
         <div id='habitat'>
-          Habitat: <div>{species.habitat ? species.habitat.name : 'NONE'}</div>
+          <h4><b>Habitat:</b></h4> <div>{species.habitat ? species.habitat.name : 'NONE'}</div>
         </div>
       </div>
       <div id='abilities'>
@@ -47,7 +57,8 @@ const ModalInfo = ({ modalPokemon, species }) => {
 
 ModalInfo.propTypes = {
   modalPokemon: PropTypes.object.isRequired,
-  species: PropTypes.object.isRequired
+  species: PropTypes.object.isRequired,
+  abilities: PropTypes.array.isRequired
 };
 
 export default ModalInfo;

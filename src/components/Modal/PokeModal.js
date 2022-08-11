@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import ModalInfo from './ModalInfo';
 import ModalEvo from './ModalEvo';
+import Loading from '../Loading';
 import exportedFunctions from '../../services/poke';
 import { gradient } from '../../services/gradient';
 import bg from '../../components/imgs/bg.png';
@@ -15,24 +16,25 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
   const [next, setNext] = useState({});
   const [loading, setLoading] = useState(true);
   const [species, setSpecies] = useState({});
+  const [abilities, setAbilities] = useState([]);
 
   useEffect(() => {
     console.log(loading);
     setLoading(true);
     handleColor();
-    exportedFunctions.getEvo(modalPokemon.id).then((data) => {
-      console.log(data);
-      setEvoLine(data);
-      console.log(evoLine);
-    });
-    exportedFunctions.getSpecies(modalPokemon.id).then(data => {
-      setSpecies(data);
-    });
-    exportedFunctions.getPrevNext(modalPokemon.id).then((data) => {
-      setPrev(data.prev);
-      setNext(data.next);
+    const getData = async () => {
+      const evoData = await exportedFunctions.getEvo(modalPokemon.id);
+      const speciesData = await exportedFunctions.getSpecies(modalPokemon.id);
+      const prevnextData = await exportedFunctions.getPrevNext(modalPokemon.id);
+      const abilityData = await exportedFunctions.getAbilities(modalPokemon.abilities);
+      setEvoLine(evoData);
+      setSpecies(speciesData);
+      setPrev(prevnextData.prev);
+      setNext(prevnextData.next);
+      setAbilities(abilityData);
       setLoading(false);
-    });
+    };
+    getData().catch(console.error);
   }, [modalPokemon]);
 
   const handleColor = () => {
@@ -62,7 +64,7 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
         style={background}
       >
 
-        {loading ? (<div className='innerModal'>loadin...</div>) : (<div className='innerModal'>
+        {loading ? (<div className='innerModal'><Loading /></div>) : (<div className='innerModal'>
           <ModalHeader
             prev={prev}
             next={next}
@@ -75,7 +77,7 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
             }
             alt='img failed to load'
           />
-          <ModalInfo modalPokemon={modalPokemon} species={species} />
+          <ModalInfo modalPokemon={modalPokemon} species={species} abilities={abilities}/>
           <ModalEvo evoLine={evoLine}></ModalEvo>
         </div>)
         }

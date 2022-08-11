@@ -43,7 +43,7 @@
     overflow: auto;
 }
 
-.innerModal > img{
+.innerModal>img {
     width: 40%;
 }
 
@@ -53,19 +53,20 @@
     text-transform: uppercase;
 }
 
-.modalHeader > div{
+.modalHeader>div {
     display: flex;
     padding: 1rem;
     font-size: 1rem;
     user-select: none;
 }
 
-.main{
+.main {
     flex-direction: column;
     place-items: center;
+    row-gap: 1rem;
 }
 
-.modalHeader div img{
+.modalHeader div img {
     width: 3rem;
     height: 3rem;
 }
@@ -74,20 +75,19 @@
     cursor: pointer;
 }
 
-.next:hover > img,
-.prev:hover > img
-{
+.next:hover>img,
+.prev:hover>img {
     transform: scale(1.2);
 }
 
-.flavor{
+.flavor {
     margin-bottom: 2rem;
     width: 70%;
     line-height: 1.5;
     text-align: center;
 }
 
-.general-info{
+.general-info {
     display: flex;
     width: 70%;
     justify-content: space-around;
@@ -96,8 +96,13 @@
     text-align: center;
 }
 
-.modal-types{
-    width: fit-content;
+.general-info div{
+    margin: 0.5rem;
+}
+
+.modal-types .typing{
+    width:12ch;
+    justify-content: center;
 }
 
 .evoLine {
@@ -118,22 +123,22 @@
     display: flex;
 }
 
-.stat-container{
+.stat-container {
     display: flex;
 }
 
-.stat-name{
+.stat-name {
     width: 8ch;
 }
 
-.stat-bar-container{
+.stat-bar-container {
     width: 15ch;
     margin: 5px;
     display: flex;
     gap: 2px;
 }
 
-.stat-bar{
+.stat-bar {
     background-color: green;
     display: flex;
     border-radius: 20px;
