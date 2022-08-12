@@ -17,6 +17,16 @@
     width: 80%;
     padding: 1rem;
     border-radius: 20px;
+    animation: fadeIn .2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 .pokeModal::after {
@@ -179,4 +189,80 @@
     padding: 0.3rem;
     border: 1px solid black;
     justify-content: flex-end;
+}
+
+@media screen and (max-width: 750px) {
+    .pokeModal-container{
+        align-items: flex-end;
+    }
+    .pokeModal{
+        width: 100%;
+        height: 70%;
+        animation: slide 0.5s ease-out;
+        position: relative;
+        padding: 1rem 0 1rem 0;
+    }
+
+    @keyframes slide {
+        from {
+            transform: translateY(200%);
+        }
+        to{
+            transform: translateY(0%);
+        }
+    }
+
+    .flavor{
+        width: 90%;
+    }
+
+    .pokeModal::after {
+        top: 0;
+        transform: translateY(-10px);
+    }
+
+    .general-info{
+        flex-direction: column;
+    }
+
+    .modal-types{
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+    }
+
+    .modalHeader{
+        display: grid;
+        grid-template-areas: 
+        "main main"
+        "prev next"
+        ;
+    }
+
+    .modalHeader .main{
+        grid-area: main;
+        gap: 0.5rem;
+        justify-content: center;
+
+    }
+
+    .modalHeader .prev{
+        grid-area: prev;
+    }
+
+    .modalHeader .next{
+        grid-area: next;
+        justify-content: flex-end;
+    }
+
+    .abilities{
+        width: 100%;
+    }
+
+    .innerModal > img {
+        position: absolute;
+        top: -10rem;
+        width: 10rem;
+        animation: fadeIn 0.5s ease-in;
+    }
 }

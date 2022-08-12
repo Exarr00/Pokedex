@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .spinner {
@@ -63,5 +64,22 @@
     100% {
         background: rgba(0, 0, 0, 0.2);
         box-shadow: 10px 0 rgba(0, 0, 0, 0.2), 20px 0 black;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .spinner > img{
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .loading{
+        font-size: 1rem;
+    }
+
+    .loading::after{
+        height: 0.2rem;
+        width: 0.2rem;
+        bottom: 0;
     }
 }

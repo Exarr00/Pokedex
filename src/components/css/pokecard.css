@@ -11,18 +11,19 @@
     border-radius: 1rem;
     position: relative;
     background: url('../imgs/bg.png');
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-}
-.card:hover{
-    cursor: pointer;
-    outline: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.card:hover .sprite{
+.card:hover {
+    cursor: pointer;
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .sprite {
     transform: scale(1.2);
 }
 
-.sprite{
+.sprite {
     position: absolute;
     width: 5rem;
     height: 5rem;
@@ -49,4 +50,17 @@
 .typing img {
     object-fit: none;
     width: 1ch;
+}
+
+@media screen and (max-width: 1200px ){
+    .card{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 600px ){
+    .card{
+        width: 100%;
+        margin-right: 0;
+    }
 }
