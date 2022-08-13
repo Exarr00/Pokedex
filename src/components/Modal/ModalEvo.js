@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import exportedFunctions from '../../services/poke';
 
-const ModalEvo = ({ evoLine, handleModal, modalPokemon }) => {
+const ModalEvo = ({ evoLine, handleModal, modalPokemon, handleScroll }) => {
   const getId = (url) => {
     const lastSlash = url.lastIndexOf('/');
     const firstSlash = url.lastIndexOf('/', lastSlash - 1);
@@ -11,6 +11,7 @@ const ModalEvo = ({ evoLine, handleModal, modalPokemon }) => {
 
   const getEvo = async (pokemon) => {
     if (pokemon === modalPokemon) {
+      handleScroll();
       return;
     }
     const response = await exportedFunctions.getSingle(pokemon);
@@ -63,7 +64,8 @@ const ModalEvo = ({ evoLine, handleModal, modalPokemon }) => {
 ModalEvo.propTypes = {
   evoLine: PropTypes.object.isRequired,
   handleModal: PropTypes.func.isRequired,
-  modalPokemon: PropTypes.string.isRequired
+  modalPokemon: PropTypes.string.isRequired,
+  handleScroll: PropTypes.func.isRequired
 };
 
 export default ModalEvo;

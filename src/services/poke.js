@@ -22,7 +22,6 @@ const getIndividual = async (allPokes) => {
 };
 
 const getSingle = async (name) => {
-  console.log(baseurl + '/' + name);
   const response = await axios.get(baseurl + '/' + name);
   return response.data;
 };
@@ -54,9 +53,7 @@ const getAbilities = async (abilities) => {
   const allAbilities = [];
   await Promise.all(
     abilities.map((ability) => {
-      console.log(ability);
       return axios.get(ability.ability.url).then((result) => {
-        console.log(result);
         allAbilities.push({
           name: ability.ability.name,
           entries: result.data.effect_entries,

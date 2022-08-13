@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import ModalInfo from './ModalInfo';
@@ -18,8 +18,9 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
   const [species, setSpecies] = useState({});
   const [abilities, setAbilities] = useState([]);
 
+  const modal = useRef(null);
+
   useEffect(() => {
-    console.log(loading);
     setLoading(true);
     handleColor();
     const getData = async () => {
@@ -34,7 +35,7 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
       setAbilities(abilityData);
       setLoading(false);
     };
-    getData().catch(console.error);
+    getData();
   }, [modalPokemon]);
 
   const handleColor = () => {
@@ -48,6 +49,10 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
       bgColor = gradient(typing[0].type.name, typing[0].type.name);
     }
     setTypes(bgColor);
+  };
+
+  const handleScroll = () => {
+    modal.current.scrollTo(0, 0);
   };
 
   const background = {
@@ -64,7 +69,7 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
         style={background}
       >
 
-        {loading ? (<div className='innerModal'><Loading /></div>) : (<div className='innerModal'>
+        {loading ? (<div className='innerModal'><Loading /></div>) : (<div className='innerModal' ref={modal}>
           <ModalHeader
             prev={prev}
             next={next}
@@ -77,8 +82,8 @@ const PokeModal = ({ handleCloseModal, handleModal, modalPokemon }) => {
             }
             alt='img failed to load'
           />
-          <ModalInfo modalPokemon={modalPokemon} species={species} abilities={abilities}/>
-          <ModalEvo evoLine={evoLine} handleModal={handleModal} modalPokemon={modalPokemon.name}></ModalEvo>
+          <ModalInfo modalPokemon={modalPokemon} species={species} abilities={abilities} />
+          <ModalEvo evoLine={evoLine} handleModal={handleModal} modalPokemon={modalPokemon.name} handleScroll={handleScroll}></ModalEvo>
         </div>)
         }
       </div>

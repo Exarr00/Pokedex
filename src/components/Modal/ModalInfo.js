@@ -9,9 +9,8 @@ const ModalInfo = ({ modalPokemon, species, abilities }) => {
   };
 
   const getEffect = (entries) => {
-    if(entries.length === 0) return '<--Currently no info-->';
+    if (entries.length === 0) return '<--Currently no info-->';
     const match = entries.find(effect => effect.language.name === 'en');
-    console.log(match);
     return match.effect.split('\f').join('');
   };
 

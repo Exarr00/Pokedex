@@ -91,22 +91,22 @@ select {
 @media screen and (max-width: 1000px) {
     .filter-container {
         flex-direction: column-reverse;
+        place-items: center;
     }
 
     .poke-search {
         width: 100%;
+        margin-bottom: 0.5rem;
     }
 
     .poke-search input {
-        border-top-left-radius: 20px;
-        border-bottom-right-radius: 0px;
-        border-left: 1px solid black;
-        border-bottom: 0px;
+        border-radius: 20px;
+        border: 1px solid black;
         box-shadow: 5px 0px 5px rgb(0 0 0 /20%);
     }
 
     .filter-options {
-        width: 100%;
+        width: 80%;
     }
 
     .poke-region select {

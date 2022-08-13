@@ -32,7 +32,6 @@ function App() {
   const handleModal = (pokemon) => {
     setShowModal(true);
     setModalPokemon(pokemon);
-    console.log(pokemon.name);
     document.body.style.overflow = 'hidden';
   };
 
